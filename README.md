@@ -1,6 +1,6 @@
 # bets
 
-a [Sails v1](https://sailsjs.com) application zaza
+a [Sails v1](https://sailsjs.com) application zazaa
 
 
 ### Links
