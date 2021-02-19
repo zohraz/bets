@@ -18,7 +18,7 @@ module.exports.models = {
 
   /***************************************************************************
   *                                                                          *
-  * Whether model methods like `.create()` and `.update()` should ignore     *
+  * Whether the `.create()` and `.update()` model methods should ignore      *
   * (and refuse to persist) unrecognized data-- i.e. properties other than   *
   * those explicitly defined by attributes in the model definition.          *
   *                                                                          *
@@ -37,7 +37,6 @@ module.exports.models = {
 
   // schema: true,
 
-
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *
@@ -53,7 +52,7 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
 
-  // migrate: 'alter',
+ migrate: 'alter',
 
 
   /***************************************************************************
@@ -71,7 +70,7 @@ module.exports.models = {
   attributes: {
     createdAt: { type: 'number', autoCreatedAt: true, },
     updatedAt: { type: 'number', autoUpdatedAt: true, },
-    id: { type: 'number', autoIncrement: true, },
+    id: { type: 'string', columnName: '_id' },
     //--------------------------------------------------------------------------
     //  /\   Using MongoDB?
     //  ||   Replace `id` above with this instead:
@@ -79,9 +78,6 @@ module.exports.models = {
     // ```
     // id: { type: 'string', columnName: '_id' },
     // ```
-    //
-    // Plus, don't forget to configure MongoDB as your default datastore:
-    // https://sailsjs.com/docs/tutorials/using-mongo-db
     //--------------------------------------------------------------------------
   },
 
@@ -101,7 +97,7 @@ module.exports.models = {
   ******************************************************************************/
 
   dataEncryptionKeys: {
-    default: 'Ybao1bH+Rheo+p8hSLb3j4bQbk9Mf/qNBb2EeZEpSg8='
+    default: '531tiQkqOiATGOmKzq9s8uhJCBLUVOFj7zL4w/lGD2k='
   },
 
 

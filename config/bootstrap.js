@@ -1,15 +1,15 @@
 /**
- * Seed Function
+ * Bootstrap
  * (sails.config.bootstrap)
  *
- * A function that runs just before your Sails app gets lifted.
- * > Need more flexibility?  You can also create a hook.
+ * An asynchronous bootstrap function that runs just before your Sails app gets lifted.
+ * > Need more flexibility?  You can also do this by creating a hook.
  *
- * For more information on seeding your app with fake data, check out:
+ * For more information on bootstrapping your app, check out:
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
+module.exports.bootstrap = async function(done) {
 
   // By convention, this is a good place to set up fake data during development.
   //
@@ -17,7 +17,7 @@ module.exports.bootstrap = async function() {
   // ```
   // // Set up fake development data (or if we already have some, avast)
   // if (await User.count() > 0) {
-  //   return;
+  //   return done();
   // }
   //
   // await User.createEach([
@@ -26,5 +26,9 @@ module.exports.bootstrap = async function() {
   //   // etc.
   // ]);
   // ```
+
+  // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
+  // (otherwise your server will never lift, since it's waiting on the bootstrap)
+  return done();
 
 };
