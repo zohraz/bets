@@ -41,9 +41,21 @@ module.exports = {
     uid: {
       type: 'string'
     },
+    etat: {
+      type: 'string'
+    },
+    amount: {
+      type: 'number'
+    },
+    
+    datenaissance: {
+      type: 'string'
+    },
+    ville: {
+      type: 'string'
+    },
     role: {
       model: 'Role',
-      unique: true
   },
     // One-to-Many -> Add a reference to Posts 
  

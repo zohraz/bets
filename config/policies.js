@@ -16,7 +16,23 @@ module.exports.policies = {
   * (`true` allows public access)                                            *
   *                                                                          *
   ***************************************************************************/
-
   // '*': true,
+// 'GET /register':['isAdmin','isSuperAdmin'],
+  UserController: {
+    "create": ['isAdmin'],
+   // "find": ['isAdmin','isSuperAdmin'],
+ 
+   "delete":['isSuperAdmin'],
 
+    "destroy":['isSuperAdmin']
+ },
+ RoleController: {
+   "create": ['isSuperAdmin'],
+   //"find": ['isSuperAdmin'],
+
+   "destroy":['isSuperAdmin']
+},
+ AuthController: {
+    '*': true
+ }
 };
