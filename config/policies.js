@@ -18,12 +18,15 @@ module.exports.policies = {
   ***************************************************************************/
   // '*': true,
 // 'GET /register':['isAdmin','isSuperAdmin'],
-  UserController: {
-    "create": ['isAdmin'],
-   // "find": ['isAdmin','isSuperAdmin'],
- 
-   "delete":['isSuperAdmin'],
 
+ UserController: {
+  "create": ['isSuperAdmin'],
+    "create": ['isAdmin'],
+    "listadminbyidsuperadmin": ['isSuperAdmin'],
+    "listshopbyidadmin": ['isAdmin'],
+    "listjoueurbyidshop": ['isShop'],
+    "deletebyid": ['isSuperAdmin'],
+   "find": ['isSuperAdmin'],
     "destroy":['isSuperAdmin']
  },
  RoleController: {

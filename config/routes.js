@@ -34,8 +34,10 @@ module.exports.routes = {
   'GET /Ajouter': 'UserController.AjouterMontant',
   'POST /modifieruser': 'UserController.modifieruser',
   'GET /changeretatuser': 'UserController.changeretatuser',
-  'GET /delete': 'UserController.delete',
-
+  'GET /deletebyid': 'UserController.delete',
+  'GET /listadminbyidsuperadmin': 'UserController.listadminbyidsuperadmin',
+  'GET /listshopbyidadmin': 'UserController.listshopbyidadmin',
+  'GET /listjoueurbyidshop': 'UserController.listjoueurbyidshop',
   
   'GET /Listuserbyrole': 'UserController.Listuserbyrole',
   '/logout': 'AuthController.logout',

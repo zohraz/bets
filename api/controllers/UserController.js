@@ -64,6 +64,75 @@ module.exports = {
     });
 });
   },
+  listjoueurbyidshop: function(req, res) {
+    //get list des admin by idsuperadmin et list des joeueur by idadmin
+    console.log("list admins"+req.param('idshop'))
+           
+            User.find({createtedby: req.param('idshop')}).exec(function (err, users) {
+                if (err) {
+                    res.send(500, { error: 'Database Error' });
+                }
+               
+        console.log(users.length)
+
+        res.send(users);
+
+    
+      
+       
+        });
+    },
+
+  listshopbyidadmin: function(req, res) {
+    //get list des admin by idsuperadmin et list des joeueur by idadmin
+    console.log("list admins"+req.param('idadmin'))
+           
+            User.find({createtedby: req.param('idadmin')}).exec(function (err, users) {
+                if (err) {
+                    res.send(500, { error: 'Database Error' });
+                }
+               
+        console.log(users.length)
+
+        res.send(users);
+
+    
+      
+       
+        });
+    },
+  listadminbyidsuperadmin: function(req, res) {
+    //get list des admin by idsuperadmin et list des joeueur by idadmin
+    console.log("list admins"+req.param('idsuperadmin'))
+           
+            User.find({createdby: req.param('idsuperadmin')}).exec(function (err, users) {
+                if (err) {
+                    res.send(500, { error: 'Database Error' });
+                }
+               
+        console.log(users.length)
+
+        res.send(users);
+
+    
+      
+       
+        });
+    },
+    deletebyid: function (req, res) {
+        console.log("files"+req.param('id'));
+        User.destroy({'id' : req.param('id')}).exec(function(err){
+
+            if (err) {
+                res.send(500, { error: 'Database Error' });
+            }
+            console.log("removed");
+            res.send(req.param('id'));
+            //res.redirect('Resataurant/list');
+        });
+        return false;
+      },
+
   Listuserbyrole: function(req, res) {
     console.log("eeeee")
             var listusers=[];
@@ -139,10 +208,9 @@ module.exports = {
         var nom = req.body.nom;
     
         var email = req.body.email;
-        var phone = req.body.phone;
         var datenaisance = req.body.datenaisance;
         var ville = req.body.ville;
-        User.update({ id: idu }, {username: nom, email: email, phone: phone,datenaissance: datenaisance,ville: ville}).exec(function (err) {
+        User.update({ id: idu }, {username: nom, email: email,datenaissance: datenaisance,ville: ville}).exec(function (err) {
             if (err) {
                 res.send(500, { error: 'Database Error' });
             }
