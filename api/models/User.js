@@ -32,16 +32,12 @@ module.exports = {
     username: {
       type: 'string',
       required: true,
-      unique: true
     },
     password: {
       type: 'string',
       required: true
     },
     uid: {
-      type: 'string'
-    },
-    etat: {
       type: 'string'
     },
     amount: {
@@ -54,6 +50,12 @@ module.exports = {
     ville: {
       type: 'string'
     },
+    etat: {
+      type: 'string'
+    },
+    createdby: {
+      type: 'string'
+    },
     role: {
       model: 'Role',
   },
@@ -63,13 +65,5 @@ module.exports = {
   customToJSON: function() {
      return _.omit(this, ['password'])
   },
-  beforeCreate: function(user, cb){
-    bcrypt.genSalt(10, function(err, salt){
-      bcrypt.hash(user.password, salt, null, function(err, hash){
-        if(err) return cb(err);
-        user.password = hash;
-        return cb();
-      });
-    });
-  }
+ 
 };

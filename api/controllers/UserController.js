@@ -199,7 +199,75 @@ module.exports = {
             //res.redirect('Resataurant/list');
         });
       },
+      inscription :async function (req, res) {
+        console.log("add role");
+        var username = req.body.username;
     
+    
+        var email = req.body.email;
+        var password = req.body.password;
+        var phone = req.body.phone;
+        var amount = req.body.amount;
+        var createdby = req.body.createdby;
+        var roleref = req.body.roleref;
+
+        Role.findOne({roleName: roleref}).exec(function (err, role) {
+
+        User.create({ username: username, etat:"actif",email: email,password:password, phone: phone , amount: amount , createdby: createdby , role: role.id}, function(err, createdUser) {
+           // Role.create({roleName: "www"}, function(err, createdUser) {
+
+            console.log(createdUser);
+            if (err) {
+                //res.send(500, { error: 'Database Error' });
+                res.status(500).send(err)  
+            }
+        }, { fetch: true });
+    });
+    
+        },
+      inscription2: function (req, res) {
+        console.log("modifier"+req.body.username);
+    
+        var username = req.body.username;
+    
+    
+        var email = req.body.email;
+        var password = req.body.password;
+        var phone = req.body.phone;
+        var amount = req.body.amount;
+        var createdby = req.body.createdby;
+        var roleref = req.body.roleref;
+        console.log(username)
+        console.log(password)
+        console.log(phone)
+        console.log(amount)
+
+        if(roleref==="admin") {
+console.log("admin")
+Role.findOne({roleName: roleref}).exec(function (err, role) {
+    if (err) {
+        res.send(500, { error: 'Database Error' });
+    }
+    console.log(role)
+    User.create({ username: username, etat:"actif",email: email,password:password, phone: phone , amount: amount , createdby: createdby , role: role.id}, function(err, createdUser) {
+        // Role.create({roleName: "www"}, function(err, createdUser) {
+
+         console.log(createdUser);
+         if (err) {
+             //res.send(500, { error: 'Database Error' });
+             res.status(500).send(err)  
+         }
+     }, { fetch: true });
+   // Role.create({roleName: "www"}).exec(function (err, result) {
+
+
+
+        res.send(createdUser);
+    }, { fetch: true });
+
+
+    }
+    },
       modifieruser: function (req, res) {
         console.log("modifier"+req.body.id);
     

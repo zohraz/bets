@@ -5,7 +5,13 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = {
-	
-};
 
+module.exports = {
+    add :async function (req, res) {
+        console.log("add role");
+        Role.create({roleName: "www"}, function(err, createdUser) {
+            console.log(createdUser);
+        }, { fetch: true });
+
+        }
+    }

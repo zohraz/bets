@@ -29,6 +29,8 @@ module.exports.routes = {
   },
   'GET /login': { view: 'login' },
   'POST /login': 'AuthController.login',
+  'POST /inscription': 'UserController.inscription',
+  'POST /add': 'RoleController.add',
 
   'GET /Retirer': 'UserController.RetirerMontant',
   'GET /Ajouter': 'UserController.AjouterMontant',
@@ -41,7 +43,6 @@ module.exports.routes = {
   
   'GET /Listuserbyrole': 'UserController.Listuserbyrole',
   '/logout': 'AuthController.logout',
-  'GET /registerjoueur': {policy: 'noaccess'},
 
   'GET /register': { view: 'register' }
   /***************************************************************************
